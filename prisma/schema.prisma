@@ -15,23 +15,18 @@ datasource db {
 }
 
 model Patient {
-  id          Int         @id @default(autoincrement())
-  name        String
-  email       String      @unique
-  dateOfBirth DateTime?
-  gender      String?
-  hospitals   Hospital[]  // One patient can have many hospital records
+  id          Int       @id @default(autoincrement())
+  name        String 
+  email       String    @unique
+  gender      String  @unique
+  Hospital   Hospital @relation(fields: [hospitalId], references: [id])
+  hospitalId Int
 }
 
 model Hospital {
-  id             Int       @id @default(autoincrement())
-  name           String
-  location       String?
-  admissionDate  DateTime
-  dischargeDate  DateTime?
-  diagnosis      String?
-  treatment      String?
-  doctorName     String?
-  patientId      Int
-  patient        Patient   @relation(fields: [patientId], references: [id])
+  id            Int       @id @default(autoincrement())
+  name          String @unique
+  treatment     String @unique
+ // One hospital can have many patient records
+  patients Patient[]
 }
