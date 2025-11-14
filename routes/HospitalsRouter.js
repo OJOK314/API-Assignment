@@ -3,15 +3,32 @@ const router = express.Router()
 
 const HospitalsController = require('../controller/HospitalsController')
 
-// router.get('/', HospitalsController.getAllHospitals)
+router.get('/', HospitalsController.getAllHospitals)
 
-router.get('/', (req,res)=>{
-    res.send(req.query)
-})
+// router.get('/', (req,res)=>{
+//     res.send(req.query)
+// })
 
 router.post('/',HospitalsController.createNewHospital)
 
- module.exports = router
+ module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // const express = require('express')

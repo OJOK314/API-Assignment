@@ -14,11 +14,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+
+
 model Patient {
   id          Int       @id @default(autoincrement())
-  name        String 
+  name        String    @unique
   email       String    @unique
   gender      String  @unique
+  password     String @default("1234")
   Hospital   Hospital @relation(fields: [hospitalId], references: [id])
   hospitalId Int
 }
